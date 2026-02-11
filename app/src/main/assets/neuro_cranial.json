@@ -1,0 +1,178 @@
+[
+  {
+    "type": "header",
+    "text": "Cranial Nerve Examination",
+    "level": 1
+  },
+  {
+    "type": "callout",
+    "text": "General Inspection Clues: Look for Ptosis, Facial Asymmetry, Hearing Aids, or Hoarseness before starting."
+  },
+  {
+    "type": "tab_group",
+    "tabs": [
+      {
+        "title": "Vision (II-VI)",
+        "content": [
+          {
+            "type": "header",
+            "text": "CN II: Optic Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Visual Acuity: Snellen Chart / Finger counting" },
+              { "text": "Visual Fields: Confrontation test" },
+              { "text": "Color Vision: Ishihara plates (Optic Neuritis)" },
+              { "text": "Pupillary Reflexes:", "subItems": [
+                { "text": "Direct: Constriction in illuminated eye" },
+                { "text": "Consensual: Constriction in opposite eye" },
+                { "text": "RAPD (Marcus Gunn Pupil): Dilates when light swings to affected eye" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "CN III, IV, VI: Ocular Motor",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Inspection:", "subItems": [
+                { "text": "Ptosis (Complete = CN III, Partial = Horner's)" },
+                { "text": "Proptosis (Thyrotoxicosis)" },
+                { "text": "Strabismus (Squint)" }
+              ]},
+              { "text": "Eye Movements (H-Test):", "subItems": [
+                { "text": "CN VI Palsy: Failure to abduct (Lateral Rectus)" },
+                { "text": "CN IV Palsy: Diplopia on looking down/in (Superior Oblique)" },
+                { "text": "CN III Palsy: 'Down and Out' eye + Dilated pupil" }
+              ]},
+              { "text": "Nystagmus:", "subItems": [
+                { "text": "Horizontal (Vestibular/Cerebellar)" },
+                { "text": "Vertical (Brainstem lesion)" }
+              ]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Face (V, VII)",
+        "content": [
+          {
+            "type": "header",
+            "text": "CN V: Trigeminal Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Sensory (Cotton wool/Pin):", "subItems": [
+                { "text": "Ophthalmic (V1) - Forehead" },
+                { "text": "Maxillary (V2) - Cheek" },
+                { "text": "Mandibular (V3) - Jaw" }
+              ]},
+              { "text": "Motor:", "subItems": [
+                { "text": "Clench teeth (Feel Masseter/Temporalis)" },
+                { "text": "Open mouth against resistance (Pterygoids)" }
+              ]},
+              { "text": "Reflexes:", "subItems": [
+                { "text": "Corneal Reflex (Afferent V1, Efferent VII)" },
+                { "text": "Jaw Jerk (Brisk in Pseudobulbar palsy)" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "CN VII: Facial Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Inspection: Loss of nasolabial fold, Drooping corner of mouth" },
+              { "text": "Motor Commands:", "subItems": [
+                { "text": "Raise eyebrows (Frontalis)" },
+                { "text": "Close eyes tightly (Orbicularis Oculi)" },
+                { "text": "Blow out cheeks (Buccinator)" },
+                { "text": "Show teeth" }
+              ]}
+            ]
+          },
+          {
+            "type": "table",
+            "tableHeaders": ["Feature", "LMN Lesion (Bell's)", "UMN Lesion (Stroke)"],
+            "tableRows": [
+              ["Forehead Wrinkling", "Lost", "Preserved (Spared)"],
+              ["Eye Closure", "Incomplete (Bell's Phenomenon)", "Normal"],
+              ["Mouth Deviation", "To healthy side", "To healthy side"]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Bulbar (VIII-XII)",
+        "content": [
+          {
+            "type": "header",
+            "text": "CN VIII: Vestibulocochlear",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Gross Hearing: Whisper numbers in each ear" },
+              { "text": "Rinne's Test (512Hz Tuning Fork):", "subItems": [
+                { "text": "Air > Bone (Normal / Sensorineural Loss)" },
+                { "text": "Bone > Air (Conductive Loss)" }
+              ]},
+              { "text": "Weber's Test:", "subItems": [
+                { "text": "Localizes to Normal ear (Sensorineural)" },
+                { "text": "Localizes to Affected ear (Conductive)" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "CN IX, X: Glossopharyngeal & Vagus",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Voice: Hoarseness (Recurrent laryngeal n.), Bovine cough" },
+              { "text": "Palate: Say 'Ahhh' - Uvula deviates AWAY from lesion" },
+              { "text": "Gag Reflex: Afferent IX, Efferent X" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "CN XI: Accessory",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Trapezius: Shrug shoulders against resistance" },
+              { "text": "Sternocleidomastoid: Turn head against resistance" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "CN XII: Hypoglossal",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Inspection: Wasting, Fasciculations (LMN)" },
+              { "text": "Movement: Protrude tongue - Deviates TOWARDS the lesion" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

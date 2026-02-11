@@ -1,0 +1,187 @@
+[
+  {
+    "type": "header",
+    "text": "Upper Limb Examination",
+    "level": 1
+  },
+  {
+    "type": "callout",
+    "text": "Always expose both upper limbs fully. Compare Left vs Right at every step."
+  },
+  {
+    "type": "tab_group",
+    "tabs": [
+      {
+        "title": "Motor Exam",
+        "content": [
+          {
+            "type": "header",
+            "text": "Inspection",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Wasting:", "subItems": [
+                { "text": "Proximal (Deltoid/Supraspinatus)" },
+                { "text": "Distal (Thenar/Hypothenar eminences, Dorsal guttering)" }
+              ]},
+              { "text": "Fasciculations: Visible muscle twitching (LMN lesion / MND)" },
+              { "text": "Deformities: Claw hand, Wrist drop, Dupuytren's" },
+              { "text": "Tremor: Resting (Parkinson's), Intention (Cerebellar), Postural (Thyroid)" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Tone",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Hypertonia:", "subItems": [
+                { "text": "Spasticity: 'Clasp-knife' (Pyramidal / Stroke)" },
+                { "text": "Rigidity: 'Lead-pipe' or 'Cogwheel' (Extrapyramidal / Parkinson's)" }
+              ]},
+              { "text": "Hypotonia: Flaccidity (LMN lesion / Cerebellar)" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Power (Myotomes)",
+            "level": 2
+          },
+          {
+            "type": "table",
+            "tableHeaders": ["Movement", "Root", "Nerve"],
+            "tableRows": [
+              ["Shoulder Abduction", "C5", "Axillary"],
+              ["Elbow Flexion", "C5, C6", "Musculocutaneous"],
+              ["Elbow Extension", "C7", "Radial"],
+              ["Wrist Extension", "C6", "Radial"],
+              ["Finger Flexion", "C8", "Median/Ulnar"],
+              ["Finger Abduction", "T1", "Ulnar"]
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Reflexes",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Biceps Jerk (C5, C6)" },
+              { "text": "Supinator Jerk (C5, C6) - Look for Inverted Supinator Jerk (C5 lesion)" },
+              { "text": "Triceps Jerk (C7)" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Coordination",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Finger-Nose Test: Look for Intention Tremor (Cerebellar)" },
+              { "text": "Dysdiadochokinesia: Impaired rapid alternating movements" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Nerve Palsies",
+        "content": [
+          {
+            "type": "header",
+            "text": "Median Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Lesion at Wrist (Carpal Tunnel):", "subItems": [
+                { "text": "Wasting of Thenar Eminence (LOAF muscles)" },
+                { "text": "Sensory loss: Lateral 3.5 fingers (Palm spared)" },
+                { "text": "Tests: Phalen's, Tinel's sign" }
+              ]},
+              { "text": "High Lesion (Elbow):", "subItems": [
+                { "text": "Pointing Index Sign (Ochsner's clasping test)" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Ulnar Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Signs:", "subItems": [
+                { "text": "Hypothenar wasting" },
+                { "text": "Partial Claw Hand (Ring & Little finger)" },
+                { "text": "Sensory loss: Medial 1.5 fingers" }
+              ]},
+              { "text": "Tests:", "subItems": [
+                { "text": "Froment's Sign: Flexion of IP joint of thumb when pulling paper (Adductor pollicis paralysis)" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Radial Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Signs:", "subItems": [
+                { "text": "Wrist Drop (Extensors paralyzed)" },
+                { "text": "Sensory loss: Anatomical Snuffbox (dorsum)" }
+              ]},
+              { "text": "Causes: Humerus fracture, Saturday Night Palsy" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Sensory",
+        "content": [
+          {
+            "type": "header",
+            "text": "Dermatomes",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "C5: Regimental Badge area (Shoulder)" },
+              { "text": "C6: Thumb & Index finger" },
+              { "text": "C7: Middle finger" },
+              { "text": "C8: Little finger" },
+              { "text": "T1: Medial aspect of forearm" },
+              { "text": "T2: Axilla" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Modalities to Test",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Pain (Pinprick)" },
+              { "text": "Light Touch (Cotton wool)" },
+              { "text": "Vibration (128Hz Tuning fork on bony prominences)" },
+              { "text": "Joint Position Sense (Proprioception)" },
+              { "text": "Stereognosis (Identify object with eyes closed)" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

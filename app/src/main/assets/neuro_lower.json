@@ -1,0 +1,165 @@
+[
+  {
+    "type": "header",
+    "text": "Lower Limb Examination",
+    "level": 1
+  },
+  {
+    "type": "callout",
+    "text": "Exposure is key: Ideally from the waist down (underwear preserved). Watch the patient walk before they lie down if possible."
+  },
+  {
+    "type": "tab_group",
+    "tabs": [
+      {
+        "title": "Motor Exam",
+        "content": [
+          {
+            "type": "header",
+            "text": "Inspection",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Wasting: Quadriceps (Thigh), Anterior Tibial (Shin), Small muscles of foot" },
+              { "text": "Fasciculations: Flickering in thigh/calf (LMN)" },
+              { "text": "Deformities: Pes Cavus (High arch - Friedreich's Ataxia, CMT), Charcot Joint" },
+              { "text": "Skin: Neurofibromas, Cafe-au-lait spots" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Tone",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Leg Roll: Roll leg side-to-side (Floppy vs Spastic)" },
+              { "text": "Clonus (Must check):", "subItems": [
+                { "text": "Ankle Clonus: Rapid dorsiflexion (>3 beats is abnormal)" },
+                { "text": "Patellar Clonus: Sharp downward displacement of patella" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Power (Myotomes)",
+            "level": 2
+          },
+          {
+            "type": "table",
+            "tableHeaders": ["Movement", "Root", "Nerve"],
+            "tableRows": [
+              ["Hip Flexion", "L2, L3", "Femoral"],
+              ["Knee Extension", "L3, L4", "Femoral"],
+              ["Knee Flexion", "L5, S1", "Sciatic"],
+              ["Ankle Dorsiflexion", "L4, L5", "Deep Peroneal"],
+              ["Big Toe Extension", "L5", "Deep Peroneal"],
+              ["Ankle Plantarflexion", "S1, S2", "Tibial"]
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Reflexes",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Knee Jerk (L3, L4)" },
+              { "text": "Ankle Jerk (S1)" },
+              { "text": "Plantar Response (Babinski):", "subItems": [
+                { "text": "Normal: Flexor (Down)" },
+                { "text": "Abnormal: Extensor (Up/Fanning) = UMN Lesion" }
+              ]}
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Coordination",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Heel-Shin Test: Run heel down the shin. (Ataxia = Cerebellar / Sensory loss)" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Gait & Nerves",
+        "content": [
+          {
+            "type": "header",
+            "text": "Gait Analysis",
+            "level": 2
+          },
+          {
+            "type": "table",
+            "tableHeaders": ["Gait Type", "Cause"],
+            "tableRows": [
+              ["Hemiplegic", "Stroke (Circumduction of affected leg)"],
+              ["Parkinsonian", "Festinant (shuffling), Stooped, No arm swing"],
+              ["Ataxic (Broad-based)", "Cerebellar lesion (Drunk walk)"],
+              ["High Stepping", "Foot Drop (Common Peroneal Nerve)"],
+              ["Scissor Gait", "Cerebral Palsy (Spastic Paraparesis)"],
+              ["Waddling", "Proximal Myopathy"]
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Common Peroneal Nerve",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Site of Lesion: Neck of Fibula" },
+              { "text": "Motor Sign: Foot Drop (Weakness of Dorsiflexion/Eversion)" },
+              { "text": "Sensory Sign: Loss over dorsum of foot" },
+              { "text": "Gait: High Stepping" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Sensory",
+        "content": [
+          {
+            "type": "header",
+            "text": "Dermatomes",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "L1: Inguinal ligament (Pocket area)" },
+              { "text": "L2: Anterior Thigh (Upper)" },
+              { "text": "L3: Anterior Thigh (Lower/Knee)" },
+              { "text": "L4: Medial Malleolus" },
+              { "text": "L5: Dorsum of foot / Big Toe" },
+              { "text": "S1: Lateral Malleolus / Little Toe" },
+              { "text": "S2: Posterior Thigh" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Modalities",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Vibration: 128Hz Tuning fork on Big Toe -> Medial Malleolus -> Tibial Tuberosity" },
+              { "text": "Proprioception: Distal Interphalangeal joint of Big Toe (Hold by sides)" },
+              { "text": "Pinprick/Light Touch: Map dermatomes" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
