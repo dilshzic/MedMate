@@ -6,31 +6,74 @@
   },
   {
     "type": "callout",
-    "text": "Always expose both upper limbs fully. Compare Left vs Right at every step."
+    "text": "Strategy: Inspect the whole limb (including shoulders/axilla). Compare Left vs Right at every step. Always look for clues like scars or walking aids."
   },
   {
     "type": "tab_group",
     "tabs": [
       {
-        "title": "Motor Exam",
+        "title": "Inspection",
         "content": [
           {
             "type": "header",
-            "text": "Inspection",
+            "text": "General Inspection",
             "level": 2
           },
           {
             "type": "list",
             "items": [
-              { "text": "Wasting:", "subItems": [
-                { "text": "Proximal (Deltoid/Supraspinatus)" },
-                { "text": "Distal (Thenar/Hypothenar eminences, Dorsal guttering)" }
+              { "text": "Wasting (Muscle Atrophy):", "subItems": [
+                { "text": "Thenar Eminence: Median Nerve (Carpal Tunnel, T1)" },
+                { "text": "Hypothenar Eminence: Ulnar Nerve (T1)" },
+                { "text": "Dorsal Guttering (Interossei): Ulnar Nerve" },
+                { "text": "Deltoid Flattening: Axillary Nerve" }
               ]},
-              { "text": "Fasciculations: Visible muscle twitching (LMN lesion / MND)" },
-              { "text": "Deformities: Claw hand, Wrist drop, Dupuytren's" },
-              { "text": "Tremor: Resting (Parkinson's), Intention (Cerebellar), Postural (Thyroid)" }
+              { "text": "Fasciculations:", "subItems": [
+                { "text": "Flickering under skin. Sign of LMN lesion (Anterior Horn Cell)." },
+                { "text": "If widespread + Wasting + Brisk Reflexes = Motor Neuron Disease (MND)." }
+              ]},
+              { "text": "Skin & Nails:", "subItems": [
+                { "text": "Scars: Carpal Tunnel release, Trauma." },
+                { "text": "Neurofibromas / Cafe-au-lait spots (Neurofibromatosis)." },
+                { "text": "Trophic changes: Smooth, shiny skin (Chronic denervation)." }
+              ]}
             ]
           },
+          {
+            "type": "header",
+            "text": "Deformities & Posture",
+            "level": 2
+          },
+          {
+            "type": "table",
+            "tableHeaders": ["Deformity", "Cause"],
+            "tableRows": [
+              ["Wrist Drop", "Radial Nerve Palsy"],
+              ["Claw Hand (Partial)", "Ulnar Nerve Palsy"],
+              ["Claw Hand (Complete)", "Combined Median + Ulnar (Klumpke's)"],
+              ["Dupuytren's Contracture", "Liver Disease, Diabetes, Familial"],
+              ["Rheumatoid Hands", "Ulnar deviation, Swan neck, Boutonniere"]
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Tremors",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Resting Tremor: 'Pill-rolling' (Parkinson's)." },
+              { "text": "Postural Tremor: Outstretched hands (Thyrotoxicosis, Anxiety, Essential)." },
+              { "text": "Intention Tremor: Finger-Nose test (Cerebellar)." },
+              { "text": "Flapping Tremor (Asterixis): CO2 retention, Liver/Renal failure." }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Motor System",
+        "content": [
           {
             "type": "header",
             "text": "Tone",
@@ -39,17 +82,20 @@
           {
             "type": "list",
             "items": [
-              { "text": "Hypertonia:", "subItems": [
-                { "text": "Spasticity: 'Clasp-knife' (Pyramidal / Stroke)" },
-                { "text": "Rigidity: 'Lead-pipe' or 'Cogwheel' (Extrapyramidal / Parkinson's)" }
-              ]},
-              { "text": "Hypotonia: Flaccidity (LMN lesion / Cerebellar)" }
+              { "text": "Test at Wrist and Elbow (Flex/Extend, Pro/Supinate)." },
+              { "text": "Spasticity: 'Clasp-knife' catch (Pyramidal / UMN)." },
+              { "text": "Rigidity: 'Lead-pipe' (constant) or 'Cogwheel' (with tremor) (Extrapyramidal)." },
+              { "text": "Flaccidity: LMN lesion / Cerebellar." }
             ]
           },
           {
             "type": "header",
             "text": "Power (Myotomes)",
             "level": 2
+          },
+          {
+            "type": "callout",
+            "text": "Grade 0-5 (MRC Scale). 3 = Against gravity, 4 = Against resistance, 5 = Full power."
           },
           {
             "type": "table",
@@ -60,7 +106,8 @@
               ["Elbow Extension", "C7", "Radial"],
               ["Wrist Extension", "C6", "Radial"],
               ["Finger Flexion", "C8", "Median/Ulnar"],
-              ["Finger Abduction", "T1", "Ulnar"]
+              ["Finger Abduction", "T1", "Ulnar"],
+              ["Thumb Abduction", "T1", "Median"]
             ]
           },
           {
@@ -71,9 +118,11 @@
           {
             "type": "list",
             "items": [
-              { "text": "Biceps Jerk (C5, C6)" },
-              { "text": "Supinator Jerk (C5, C6) - Look for Inverted Supinator Jerk (C5 lesion)" },
-              { "text": "Triceps Jerk (C7)" }
+              { "text": "Biceps (C5, C6)" },
+              { "text": "Supinator (C5, C6)" },
+              { "text": "Triceps (C7)" },
+              { "text": "Finger Jerk (C8) - Usually absent, brisk in UMN." },
+              { "text": "Hoffman's Sign: Flick terminal phalanx of middle finger. Positive if thumb flexes (UMN)." }
             ]
           },
           {
@@ -84,14 +133,71 @@
           {
             "type": "list",
             "items": [
-              { "text": "Finger-Nose Test: Look for Intention Tremor (Cerebellar)" },
-              { "text": "Dysdiadochokinesia: Impaired rapid alternating movements" }
+              { "text": "Finger-Nose Test: Look for Dysmetria (past-pointing) and Intention Tremor." },
+              { "text": "Dysdiadochokinesia: Rapid alternating hand clapping." },
+              { "text": "Rebound Phenomenon: Push down outstretched arms, release suddenly." }
             ]
           }
         ]
       },
       {
-        "title": "Nerve Palsies",
+        "title": "Sensation",
+        "content": [
+          {
+            "type": "header",
+            "text": "Sensory Mapping",
+            "level": 2
+          },
+          {
+            "type": "callout",
+            "text": "Test Pain (Pinprick), Light Touch, Vibration, and Proprioception."
+          },
+          {
+            "type": "header",
+            "text": "Dermatomes",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "C5: Regimental Badge area (Shoulder)" },
+              { "text": "C6: Thumb & Index finger (Lateral forearm)" },
+              { "text": "C7: Middle finger" },
+              { "text": "C8: Little finger (Medial hand)" },
+              { "text": "T1: Medial forearm" },
+              { "text": "T2: Axilla" }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Peripheral Nerves",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Median: Palmar aspect of lateral 3.5 fingers." },
+              { "text": "Ulnar: Medial 1.5 fingers (front and back)." },
+              { "text": "Radial: Anatomical Snuffbox (dorsum of thumb)." }
+            ]
+          },
+          {
+            "type": "header",
+            "text": "Functional Tests",
+            "level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              { "text": "Vibration: 128Hz Tuning fork on bony prominences (Sternum -> Shoulder -> Elbow -> Wrist -> Finger)." },
+              { "text": "Proprioception: Hold Distal IP joint by the sides. 'Up or Down?'" },
+              { "text": "Stereognosis: Identify coin/key with eyes closed (Parietal lobe function)." }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Nerve Lesions",
         "content": [
           {
             "type": "header",
@@ -101,13 +207,14 @@
           {
             "type": "list",
             "items": [
-              { "text": "Lesion at Wrist (Carpal Tunnel):", "subItems": [
-                { "text": "Wasting of Thenar Eminence (LOAF muscles)" },
-                { "text": "Sensory loss: Lateral 3.5 fingers (Palm spared)" },
-                { "text": "Tests: Phalen's, Tinel's sign" }
+              { "text": "Carpal Tunnel Syndrome (Low lesion):", "subItems": [
+                { "text": "Thenar wasting (LOAF muscles)." },
+                { "text": "Sensory loss: Lateral 3.5 fingers (Palm SPARED - palmar cutaneous branch)." },
+                { "text": "Tests: Phalen's (Prayer), Tinel's (Tap)." }
               ]},
-              { "text": "High Lesion (Elbow):", "subItems": [
-                { "text": "Pointing Index Sign (Ochsner's clasping test)" }
+              { "text": "Anterior Interosseous Nerve (High lesion):", "subItems": [
+                { "text": "No sensory loss." },
+                { "text": "Sign: 'OK' sign abnormal (Pinch grip lost)." }
               ]}
             ]
           },
@@ -119,13 +226,11 @@
           {
             "type": "list",
             "items": [
+              { "text": "Site: Elbow (Cubital tunnel) or Wrist (Guyon's canal)." },
               { "text": "Signs:", "subItems": [
-                { "text": "Hypothenar wasting" },
-                { "text": "Partial Claw Hand (Ring & Little finger)" },
-                { "text": "Sensory loss: Medial 1.5 fingers" }
-              ]},
-              { "text": "Tests:", "subItems": [
-                { "text": "Froment's Sign: Flexion of IP joint of thumb when pulling paper (Adductor pollicis paralysis)" }
+                { "text": "Hypothenar wasting + Guttering." },
+                { "text": "Ulnar Paradox: Higher lesion = Less clawing (FDP paralyzed)." },
+                { "text": "Froment's Sign: Paper pull test (Flexes thumb IPJ due to weak Adductor Pollicis)." }
               ]}
             ]
           },
@@ -138,46 +243,10 @@
             "type": "list",
             "items": [
               { "text": "Signs:", "subItems": [
-                { "text": "Wrist Drop (Extensors paralyzed)" },
-                { "text": "Sensory loss: Anatomical Snuffbox (dorsum)" }
-              ]},
-              { "text": "Causes: Humerus fracture, Saturday Night Palsy" }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Sensory",
-        "content": [
-          {
-            "type": "header",
-            "text": "Dermatomes",
-            "level": 2
-          },
-          {
-            "type": "list",
-            "items": [
-              { "text": "C5: Regimental Badge area (Shoulder)" },
-              { "text": "C6: Thumb & Index finger" },
-              { "text": "C7: Middle finger" },
-              { "text": "C8: Little finger" },
-              { "text": "T1: Medial aspect of forearm" },
-              { "text": "T2: Axilla" }
-            ]
-          },
-          {
-            "type": "header",
-            "text": "Modalities to Test",
-            "level": 2
-          },
-          {
-            "type": "list",
-            "items": [
-              { "text": "Pain (Pinprick)" },
-              { "text": "Light Touch (Cotton wool)" },
-              { "text": "Vibration (128Hz Tuning fork on bony prominences)" },
-              { "text": "Joint Position Sense (Proprioception)" },
-              { "text": "Stereognosis (Identify object with eyes closed)" }
+                { "text": "Wrist Drop (Extensors paralyzed)." },
+                { "text": "Sensory loss: Snuffbox (variable)." },
+                { "text": "Triceps spared if lesion is in Spiral Groove (Humerus fracture)." }
+              ]}
             ]
           }
         ]

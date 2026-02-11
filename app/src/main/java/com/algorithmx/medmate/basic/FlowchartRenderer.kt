@@ -3,126 +3,153 @@ package com.algorithmx.medmate.basic
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInParent
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.toSize
+
+// --- Configuration Constants ---
+// Adjust these to change the spacing of your diagram
+private val NODE_WIDTH = 120.dp
+private val NODE_HEIGHT = 55.dp
+private val X_SPACING = 150.dp // Horizontal distance between columns
+private val Y_SPACING = 100.dp // Vertical distance between rows
 
 @Composable
 fun FlowchartRenderer(data: FlowchartData) {
-    // 1. Group nodes by level (Row)
-    val rows = data.nodes.groupBy { it.level }.toSortedMap()
+    // 1. Calculate the total size required for the canvas
+    val maxLevel = data.nodes.maxOfOrNull { it.level } ?: 0
+    val maxOrder = data.nodes.maxOfOrNull { it.order } ?: 0
 
-    // Store positions of each node to draw lines later
-    val nodePositions = remember { mutableStateMapOf<String, Offset>() }
+    // Add some padding to the calculations
+    val totalWidth = X_SPACING * (maxOrder + 1) + 50.dp
+    val totalHeight = Y_SPACING * (maxLevel + 1) + 100.dp
 
-    Box(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
-        // LAYER 1: The Arrows (Canvas)
-        // We draw this *behind* the nodes
-        Canvas(modifier = Modifier.matchParentSize()) {
-            data.connections.forEach { conn ->
-                val start = nodePositions[conn.from]
-                val end = nodePositions[conn.to]
+    // Map for easy lookup of nodes by ID
+    val nodeMap = remember(data) { data.nodes.associateBy { it.id } }
 
-                if (start != null && end != null) {
-                    val path = Path().apply {
-                        moveTo(start.x, start.y + 25.dp.toPx()) // Bottom of start node
-                        // Draw a smooth cubic bezier curve
-                        cubicTo(
-                            start.x, start.y + 60.dp.toPx(), // Control point 1 (down)
-                            end.x, end.y - 60.dp.toPx(),     // Control point 2 (up)
-                            end.x, end.y - 25.dp.toPx()      // Top of end node
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(450.dp) // Fixed height container
+            .background(Color(0xFFFAFAFA))
+            .horizontalScroll(rememberScrollState()) // Allow scrolling for wide charts
+    ) {
+        Box(
+            modifier = Modifier.size(width = totalWidth, height = totalHeight)
+        ) {
+            // LAYER 1: Connections (Lines)
+            // Drawn first so they appear BEHIND the nodes
+            Canvas(modifier = Modifier.fillMaxSize()) {
+                data.connections.forEach { conn ->
+                    val startNode = nodeMap[conn.from]
+                    val endNode = nodeMap[conn.to]
+
+                    if (startNode != null && endNode != null) {
+                        // Calculate EXACT centers based on Grid Logic
+                        val startX = (startNode.order * X_SPACING.toPx()) + (NODE_WIDTH.toPx() / 2) + 20.dp.toPx()
+                        val startY = (startNode.level * Y_SPACING.toPx()) + NODE_HEIGHT.toPx() + 20.dp.toPx()
+
+                        val endX = (endNode.order * X_SPACING.toPx()) + (NODE_WIDTH.toPx() / 2) + 20.dp.toPx()
+                        val endY = (endNode.level * Y_SPACING.toPx()) + 20.dp.toPx() // Top of end node
+
+                        // Draw Curve
+                        val path = Path().apply {
+                            moveTo(startX, startY)
+                            cubicTo(
+                                startX, startY + 50f, // Control point 1 (down)
+                                endX, endY - 50f,     // Control point 2 (up)
+                                endX, endY
+                            )
+                        }
+
+                        drawPath(
+                            path = path,
+                            color = Color.Gray,
+                            style = Stroke(width = 2.dp.toPx())
                         )
                     }
-                    drawPath(
-                        path = path,
-                        color = Color.Gray,
-                        style = Stroke(width = 3.dp.toPx())
-                    )
                 }
             }
-        }
 
-        // LAYER 2: The Nodes (Boxes)
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(60.dp), // Gap between rows
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            rows.forEach { (_, nodesInRow) ->
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    // Sort by 'order' to keep left-to-right consistent
-                    nodesInRow.sortedBy { it.order }.forEach { node ->
-                        FlowchartNodeBox(node) { position ->
-                            // Save center position for drawing lines
-                            nodePositions[node.id] = position
-                        }
+            // LAYER 2: Connection Labels (Optional)
+            data.connections.forEach { conn ->
+                if (!conn.label.isNullOrEmpty()) {
+                    val startNode = nodeMap[conn.from]
+                    val endNode = nodeMap[conn.to]
+
+                    if (startNode != null && endNode != null) {
+                        val startX = (startNode.order * X_SPACING.value) + (NODE_WIDTH.value / 2) + 20f
+                        val endX = (endNode.order * X_SPACING.value) + (NODE_WIDTH.value / 2) + 20f
+                        val startY = (startNode.level * Y_SPACING.value) + NODE_HEIGHT.value + 20f
+                        val endY = (endNode.level * Y_SPACING.value) + 20f
+
+                        val labelX = (startX + endX) / 2
+                        val labelY = (startY + endY) / 2
+
+                        Text(
+                            text = conn.label,
+                            fontSize = 10.sp,
+                            modifier = Modifier
+                                .offset(x = labelX.dp, y = labelY.dp)
+                                .background(Color.White)
+                                .padding(2.dp)
+                        )
                     }
                 }
+            }
+
+            // LAYER 3: Nodes
+            data.nodes.forEach { node ->
+                FlowchartNodeBox(
+                    node = node,
+                    modifier = Modifier
+                        .offset(
+                            x = (node.order * X_SPACING.value).dp + 20.dp,
+                            y = (node.level * Y_SPACING.value).dp + 20.dp
+                        )
+                )
             }
         }
     }
 }
 
 @Composable
-fun FlowchartNodeBox(node: FlowchartNode, onPositioned: (Offset) -> Unit) {
-    val backgroundColor = when (node.type) {
-        "start" -> Color(0xFFE3F2FD) // Light Blue
-        "decision" -> Color(0xFFFFF3E0) // Light Orange
-        "end" -> Color(0xFFFFEBEE) // Light Red
-        else -> Color.White
-    }
-
-    val borderColor = when (node.type) {
-        "start" -> Color(0xFF2196F3)
-        "decision" -> Color(0xFFFF9800)
-        "end" -> Color(0xFFF44336)
-        else -> Color.LightGray
+fun FlowchartNodeBox(node: FlowchartNode, modifier: Modifier = Modifier) {
+    val (bgColor, borderColor) = when (node.type) {
+        "start", "end" -> Color(0xFFE3F2FD) to Color(0xFF2196F3) // Blue
+        "decision" -> Color(0xFFFFF3E0) to Color(0xFFFF9800)     // Orange
+        else -> Color.White to Color.Gray                        // Default
     }
 
     Box(
-        modifier = Modifier
-            .width(100.dp) // Fixed width for uniform look
-            .height(50.dp) // Fixed height
-            .background(backgroundColor, RoundedCornerShape(8.dp))
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .width(NODE_WIDTH)
+            .height(NODE_HEIGHT)
+            .background(bgColor, RoundedCornerShape(8.dp))
             .border(2.dp, borderColor, RoundedCornerShape(8.dp))
-            .onGloballyPositioned { coordinates ->
-                // Calculate the center point of this node relative to the parent Canvas
-                val parentPosition = coordinates.positionInParent()
-                val size = coordinates.size.toSize()
-                val center = Offset(
-                    x = parentPosition.x + size.width / 2,
-                    y = parentPosition.y + size.height / 2
-                )
-                onPositioned(center)
-            },
-        contentAlignment = Alignment.Center
+            .padding(4.dp)
     ) {
         Text(
             text = node.label,
-            fontSize = 10.sp,
+            fontSize = 11.sp,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center,
-            lineHeight = 12.sp,
-            modifier = Modifier.padding(4.dp)
+            lineHeight = 13.sp,
+            color = Color.Black
         )
     }
 }
