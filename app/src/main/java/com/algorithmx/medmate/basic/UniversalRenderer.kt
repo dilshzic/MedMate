@@ -61,6 +61,11 @@ fun RenderSingleBlock(block: ContentBlock) {
                 FlowchartRenderer(data = block.flowchart)
             }
         }
+        "dd_table" -> {
+            block.ddItems?.let {
+                DifferentialDiagnosisBlock(items = it)
+            }
+        }
 
         else -> Text("Unknown block type: ${block.type}")
     }

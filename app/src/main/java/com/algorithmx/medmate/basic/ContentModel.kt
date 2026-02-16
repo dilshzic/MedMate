@@ -5,12 +5,18 @@ data class ContentBlock(
     val type: String,               // "header", "list", "table", "callout", "kv_list"
     val text: String? = null,       // Used for headers, warnings, or simple text
     val level: Int = 1,             // For headers (1=Big, 2=Small)
-    val items: List<ListItem>? = null, // For bullet lists
+    val items: List<ContentItem>? = null, // For bullet lists
     val tableHeaders: List<String>? = null, // For table columns
     val tableRows: List<List<String>>? = null, // For table data
     val imageUrl: String? = null, // For  for images
     val tabs: List<TabItem>? = null,
-    val flowchart: FlowchartData? = null
+    val flowchart: FlowchartData? = null,
+    val ddItems: List<DifferentialDiagnosis>? = null,
+
+    // FIX 1: Change 'List<ListItem>?' to 'List<ContentItem>?'
+
+    // FIX 2: Add this field
+    val variant: String? = null,
 )
 
 // Helper class for nested bullet points
@@ -46,4 +52,18 @@ data class FlowchartConnection(
     val from: String,
     val to: String,
     val label: String? = null     // Text on the arrow (e.g., "Yes", "No")
+)
+
+data class DifferentialDiagnosis(
+    val finding: String,         // e.g. "Chest Pain"
+    val diagnoses: List<String>, // e.g. ["MI", "GERD", "Pneumonia"]
+    val likelihood: String? = null // Optional: "High", "Medium", "Red Flag"
+)
+// ... existing ContentBlock class ...
+
+data class ContentItem(
+    val id: String = java.util.UUID.randomUUID().toString(), // Unique ID for Compose keys
+    val text: String? = null,        // For Bullet Points
+    val title: String? = null,       // For Accordion Headers
+    val content: List<ContentBlock>? = null // For Nested Accordion Content
 )

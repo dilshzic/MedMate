@@ -1,84 +1,76 @@
 package com.algorithmx.medmate
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.algorithmx.medmate.basic.UniversalRenderer
-import com.algorithmx.medmate.screens.HomeScreen
-import com.algorithmx.medmate.utils.JsonLoader
-import androidx.compose.runtime.produceState
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import com.algorithmx.medmate.basic.ContentBlock
-import com.algorithmx.medmate.screens.CaseListScreen
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import androidx.navigation.navArgument
+import com.algorithmx.medmate.screens.ExplorerScreen
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
-    val context = LocalContext.current
 
-    NavHost(navController = navController, startDestination = "home") {
-
-        // 1. Home Screen
-        composable("home") {
-            HomeScreen(onCategorySelected = { category ->
-                navController.navigate("caseList/$category")
-            })
+    NavHost(
+        navController = navController,
+        startDestination = "explorer_root" ,// Start at the new Explorer
+        enterTransition = {
+            slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300))
+        },
+        exitTransition = {
+            slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300))
+        },
+        popEnterTransition = {
+            slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(300))
+        },
+        popExitTransition = {
+            slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(300))
         }
-        composable("caseList/{category}") { backStackEntry ->
-            val category = backStackEntry.arguments?.getString("category") ?: "short"
-            CaseListScreen(
-                category = category,
-                onCaseClicked = { fileName, title ->
-                    navController.navigate("details/$fileName/$title")
-                },
+    ) {
+        composable("search") {
+            com.algorithmx.medmate.screens.search.SearchScreen(
+                onBack = { navController.popBackStack() },
+                onNavigateToNote = { noteId -> navController.navigate("editor/$noteId") },
+                onNavigateToFolder = { folderId -> navController.navigate("explorer/$folderId") }
+            )
+        }
+        // 1. Root Explorer (Home)
+        composable("explorer_root") {
+            ExplorerScreen(
+                onFolderClick = { navController.navigate("explorer/$it") },
+                onNoteClick = { noteId ->
+                    navController.navigate("editor/$noteId") // <--- CONNECTED!
+                },onSearchClick = { navController.navigate("search") }
+            )
+        }
+
+        // 2. Folder Explorer (Deep Navigation)
+        composable(
+            route = "explorer/{folderId}",
+            arguments = listOf(navArgument("folderId") { type = NavType.StringType })
+        ) {
+            ExplorerScreen(
+                onFolderClick = { navController.navigate("explorer/$it") },
+                onNoteClick = { noteId ->
+                    navController.navigate("editor/$noteId") // <--- CONNECTED!
+                },onSearchClick = { navController.navigate("search") }
+            )
+        }
+// ... inside NavHost
+        composable(
+            route = "editor/{noteId}",
+            arguments = listOf(navArgument("noteId") { type = NavType.StringType })
+        ) {
+            // We don't need to pass arguments manually, Hilt handles it via SavedStateHandle in ViewModel
+            com.algorithmx.medmate.screens.editor.NoteEditorScreen(
                 onBack = { navController.popBackStack() }
             )
         }
 
-        composable("details/{fileName}/{title}") { backStackEntry ->
-            val fileName = backStackEntry.arguments?.getString("fileName") ?: "error.json"
-            val title = backStackEntry.arguments?.getString("title") ?: "Topic"
-            val context = LocalContext.current
 
-            // FIX: Load in background, start with empty list to prevent blocking
-            val blocks by produceState(initialValue = emptyList<ContentBlock>(), key1 = fileName) {
-                value = withContext(Dispatchers.IO) {
-                    JsonLoader.loadChapter(context, fileName)
-                }
-            }
-
-            Scaffold(
-                topBar = {
-                    TopAppBar(
-                        title = { Text(title) },
-                        navigationIcon = {
-                            IconButton(onClick = { navController.popBackStack() }) {
-                                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                            }
-                        }
-                    )
-                }
-            ) { padding ->
-                Box(modifier = Modifier.padding(padding)) {
-                    // Optional: Show loading spinner while blocks are empty
-                    if (blocks.isEmpty()) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                    } else {
-                        UniversalRenderer(blocks = blocks)
-                    }
-                }
-            }
-        }
+        // ... (Keep your old routes if you want, or delete CaseListScreen routes) ...
     }
 }
